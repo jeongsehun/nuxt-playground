@@ -6,9 +6,7 @@
         <vuetify-logo />
       </div>
       <v-card>
-        <v-card-title class="headline">
-          Hello World!
-        </v-card-title>
+        <v-card-title class="headline"> {{ title }} </v-card-title>
         <v-card-text>
           <p>
             Vuetify is a progressive Material Design component framework for
@@ -80,14 +78,18 @@
   </v-row>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 
-export default {
+@Component({
   components: {
     Logo,
     VuetifyLogo,
   },
+})
+export default class extends Vue {
+  title: string = 'Nuxt with Type Script'
 }
 </script>

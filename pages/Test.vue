@@ -11,22 +11,19 @@
   </v-card>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      text: 'jsh',
-    }
-  },
-  methods: {
-    async getRootData() {
-      const response = await this.$axios.get('/api')
-      this.text = response.data.message
-    },
-    async getHelloData() {
-      const response = await this.$axios.get('/api/hello')
-      this.text = response.data.message
-    },
-  },
+<script lang="ts">
+import { Vue, Component } from 'nuxt-property-decorator'
+export default class Test extends Vue {
+  text: string = 'jsh'
+
+  async getRootData(): Promise<void> {
+    const response = await this.$axios.get('/api')
+    this.text = response.data.message
+  }
+
+  async getHelloData(): Promise<void> {
+    const response = await this.$axios.get('/api/hello')
+    this.text = response.data.message
+  }
 }
 </script>
